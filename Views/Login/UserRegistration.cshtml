@@ -1,0 +1,197 @@
+﻿@model libray_management_system.Models.Tbl_User
+
+@{
+
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+<head>
+
+    <!-- Meta -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1">
+
+    <!-- Title -->
+    <title>..:: LIBRARIA ::..</title>
+
+    <!-- Favicon -->
+    <link href="~/uassets/images/favicon.ico" rel="icon" type="image/x-icon" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i%7CLato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+    <link href="~/uassets/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Mobile Menu -->
+    <link href="~/uassets/css/mmenu.css" rel="stylesheet" type="text/css" />
+    <link href="~/uassets/css/mmenu.positioning.css" rel="stylesheet" type="text/css" />
+
+    <!-- Stylesheet -->
+    <link href="~/uassets/css/style.css" rel="stylesheet" type="text/css" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+    <section class="page-banner services-banner">
+        <div class="container">
+            <div class="banner-header">
+                <h2>Signin</h2>
+                <span class="underline center"></span>
+                <p class="lead">Proin ac eros pellentesque dolor pharetra tempo.</p>
+            </div>
+            <div class="breadcrumb">
+                <ul>
+                    <li><a href="index-2.html">Home</a></li>
+                    <li>Signin</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <br />
+    <br />
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-success">
+            <strong>Success!</strong>@ViewBag.Message
+
+        </div>
+    }
+
+    @if (ViewBag.Stutas != null && Convert.ToBoolean(ViewBag.Stutas))
+    {
+        if (ViewBag.Message != null)
+        {
+            <div class="alert alert-success">
+                <strong>Success!</strong>@ViewBag.Message
+
+            </div>
+        }
+    }
+    else
+    {
+
+
+        using (Html.BeginForm("UserRegistration", "Login", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div id="content" class="site-content" align="center">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main">
+                        <div class="signin-main">
+                            <div class="container">
+                                <div class="woocommerce">
+                                    <div class="woocommerce-login">
+                                        <div class="company-info signin-register" style="align-self:center">
+
+                                            <div class="col-md-5 border-dark new-user">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="company-detail new-account bg-light margin-right">
+                                                            <div class="new-user-head">
+                                                                <h2>Create New Account</h2>
+                                                                <span class="underline left"></span>
+
+                                                            </div>
+                                                            <div class="form-horizontal">
+
+                                                                <p class="form-row form-row-first input-required">
+                                                                    <label>
+                                                                        <span class="first-letter">Username</span>
+                                                                        <span class="second-letter">*</span>
+                                                                    </label>
+                                                                    @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "input-text" } })
+                                                                    @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                                                                </p>
+
+
+                                                                <p class="form-row form-row-first input-required">
+                                                                    <label>
+                                                                        <span class="first-letter">Address</span>
+                                                                        <span class="second-letter">*</span>
+                                                                    </label>
+                                                                    @Html.EditorFor(model => model.useraddress, new { htmlAttributes = new { @class = "input-text" } })
+                                                                    @Html.ValidationMessageFor(model => model.useraddress, "", new { @class = "text-danger" })
+                                                                </p>
+
+                                                                <p class="form-row form-row-first input-required">
+                                                                    <label>
+                                                                        <span class="first-letter">Contact</span>
+                                                                        <span class="second-letter">*</span>
+                                                                    </label>
+                                                                    @Html.EditorFor(model => model.contact, new { htmlAttributes = new { @class = "input-text" } })
+                                                                    @Html.ValidationMessageFor(model => model.contact, "", new { @class = "text-danger" })
+                                                                </p>
+
+                                                                <p class="form-row form-row-first input-required">
+                                                                    <label>
+                                                                        <span class="first-letter">upload file</span>
+                                                                        <span class="second-letter">*</span>
+                                                                    </label>
+                                                                    <input type="file" name="ImageFile" id="ImageFile" />
+                                                                </p>
+
+                                                                <p class="form-row form-row-first input-required">
+                                                                    <label>
+                                                                        <span class="first-letter">Email ID</span>
+                                                                        <span class="second-letter">*</span>
+                                                                    </label>
+                                                                    @Html.EditorFor(model => model.emailid, new { htmlAttributes = new { @class = "input-text" } })
+                                                                    @Html.ValidationMessageFor(model => model.emailid, "", new { @class = "text-danger" })
+                                                                    @Html.ValidationMessage("EmailExist", new { @class = "text-danger" });
+
+                                                                </p>
+                                                                <p class="form-row form-row-first input-required">
+                                                                    <label>
+                                                                        <span class="first-letter">Password</span>
+                                                                        <span class="second-letter">*</span>
+                                                                    </label>
+                                                                    @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "input-text" } })
+                                                                    @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                                                                </p>
+
+                                                                <p class="form-row form-row-first input-required">
+                                                                    <label>
+                                                                        <span class="first-letter">gender</span>
+                                                                        <span class="second-letter">*</span>
+                                                                    </label>
+                                                                    @Html.DropDownListFor(model => model.gender, new SelectList(new[] { "Male", "Female" }), "Select Gender", new { @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(model => model.gender, "", new { @class = "text-danger" })
+                                                                </p>
+                                                                <div class="form-group">
+                                                                    <div class="col-md-10">
+                                                                        @Html.HiddenFor(model => model.roleid, new { @Value = 1 })
+
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <div class="clear"></div>
+                                                                <input type="submit" value="Signup" name="signup" class="button btn btn-default">
+                                                                <div class="clear"></div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+
+
+        }
+    }
+</body>

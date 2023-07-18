@@ -1,0 +1,43 @@
+﻿@model libray_management_system.Models.Tbl_Author
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/_LayoutPage2.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tbl_Author</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.authorname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.authorname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.createdon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.createdon)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.authorid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,275 @@
+﻿@model libray_management_system.Models.Tbl_Book
+
+@{
+    ViewBag.Title = "BookDetail";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+<head>
+
+    <!-- Meta -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1">
+
+    <!-- Title -->
+    <title>..:: LIBRARIA ::..</title>
+
+    <!-- Favicon -->
+    <link href="~/uassets/images/favicon.ico" rel="icon" type="image/x-icon" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i%7CLato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+    <link href="~/uassets/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Mobile Menu -->
+    <link href="~/uassets/css/mmenu.css" rel="stylesheet" type="text/css" />
+    <link href="~/uassets/css/mmenu.positioning.css" rel="stylesheet" type="text/css" />
+
+    <!-- Stylesheet -->
+    <link href="~/uassets/css/style.css" rel="stylesheet" type="text/css" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <!-- Start: Page Banner -->
+    <section class="page-banner services-banner">
+        <div class="container">
+            <div class="banner-header">
+                <h2>Books & Media Listing</h2>
+                <span class="underline center"></span>
+                <p class="lead">Proin ac eros pellentesque dolor pharetra tempo.</p>
+            </div>
+            <div class="breadcrumb">
+                <ul>
+                    <li><a href="index-2.html">Home</a></li>
+                    <li>Books & Media</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- End: Page Banner -->
+    <!-- Start: Products Section -->
+    <div id="content" class="site-content">
+        <div id="primary" class="content-area">
+            <main id="main" class="site-main">
+                <div class="booksmedia-detail-main">
+                    <div class="container">
+                        <div class="row">
+                            <!-- Start: Search Section -->
+                            <section class="search-filters">
+                                <div class="container">
+                                    <div class="filter-box">
+                                        <h3>What are you looking for at the library?</h3>
+                                        <form action="http://libraria.demo.presstigers.com/index.html" method="get">
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label class="sr-only" for="keywords">Search by Keyword</label>
+                                                    <input class="form-control" placeholder="Search by Keyword" id="keywords" name="keywords" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <select name="catalog" id="catalog" class="form-control">
+                                                        <option>Search the Catalog</option>
+                                                        <option>Catalog 01</option>
+                                                        <option>Catalog 02</option>
+                                                        <option>Catalog 03</option>
+                                                        <option>Catalog 04</option>
+                                                        <option>Catalog 05</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <select name="category" id="category" class="form-control">
+                                                        <option>All Categories</option>
+                                                        <option>Category 01</option>
+                                                        <option>Category 02</option>
+                                                        <option>Category 03</option>
+                                                        <option>Category 04</option>
+                                                        <option>Category 05</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 col-sm-6">
+                                                <div class="form-group">
+                                                    <input class="form-control" type="submit" value="Search">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </section>
+                            <!-- End: Search Section -->
+                        </div>
+                        <div class="booksmedia-detail-box">
+                            <div class="detailed-box">
+                                <div class="col-xs-12 col-sm-5 col-md-3">
+                                    <div class="post-thumbnail">
+                                        <div class="book-list-icon blue-icon"></div>
+                                        <img src="@Url.Content(Model.bookimae)" alt="Book Image" width="200" height="200">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-7 col-md-6">
+                                    <div class="post-center-content">
+                                        <h2>@Html.DisplayFor(model => model.bookname)</h2>
+                                        <p><strong>Author:</strong> @Html.DisplayFor(model => model.Tbl_Author.authorname)</p>
+                                        <p><strong>ISBN:</strong>  @Html.DisplayFor(model => model.isbnnumber)</p>
+                                        <p><strong>Rating:</strong> </p>
+                                        <p><strong>Edition:</strong> @Html.DisplayFor(model => model.edition)</p>
+                                        <p><strong>Publisher:</strong>  @Html.DisplayFor(model => model.Tbl_Publisher.publishername)  @Html.DisplayFor(model => model.publisheryear)</p>
+
+                                        <p><strong>Format:</strong> TextBook</p>
+
+                                        <p><strong>Topics:</strong>  @Html.DisplayFor(model => model.Tbl_Category.categoryname)</p>
+                                        <div class="actions">
+                                            <ul>
+                                                <li>
+                                                    <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="" data-original-title="Add To Cart">
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="" data-original-title="Like">
+                                                        <i class="fa fa-heart"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="" data-original-title="Mail">
+                                                        <i class="fa fa-envelope"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="" data-original-title="Search">
+                                                        <i class="fa fa-search"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="" data-original-title="Print">
+                                                        <i class="fa fa-print"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="" data-original-title="Print">
+                                                        <i class="fa fa-share-alt"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-3 ">
+                                    <div class="post-right-content">
+                                        <h4>Available now</h4>
+                                        <p><strong>Total Copies:</strong>  @Html.DisplayFor(model => model.totalstok)</p>
+                                        <p><strong>Available:</strong>  @Html.DisplayFor(model => model.availablestock)</p>
+                                        <p><strong>Holds:</strong>  01</p>
+                                        <p><strong>On the shelves now at:</strong> J.P Dawer Collage Library</p>
+                                        <p><strong>Call #:</strong> Collage no.</p>
+                                       
+                                        @Html.ActionLink("Reserve Book", "ReserveBook", new { id = Model.bookid }, new { @class = "btn btn-dark-gray" }) 
+                                        <a href="#." class="btn btn-dark-gray">Find Similar Titles</a>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <p><strong>Summary:</strong> There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. </p>
+
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+    </div>
+
+
+    @*<div class="booksmedia-detail-box">
+                            <div class="detailed-box">
+                                <div class="col-xs-12 col-sm-5 col-md-3">
+                                    <div class="post-thumbnail">
+                                        <div class="book-list-icon blue-icon"></div>
+                                        <img src="@Url.Content(Model.bookimae)" alt="Book Image">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-7 col-md-6">
+                            <div class="post-center-content">
+                                <h2> @Html.DisplayFor(model => model.bookname)</h2>
+                                <p><strong>Author:</strong> @Html.DisplayFor(model => model.Tbl_Author.authorname)</p>
+                                <p><strong>ISBN:</strong>  @Html.DisplayFor(model => model.isbnnumber)</p>
+                                <p><strong>Edition:</strong>@Html.DisplayFor(model => model.edition)</p>
+                                <p><strong>Publisher:</strong> @Html.DisplayFor(model => model.publisheryear)</p>
+                                <div class="actions">
+                                    <ul>
+                                        <li>
+                                            <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="" data-original-title="Add To Cart">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="" data-original-title="Like">
+                                                <i class="fa fa-heart"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="" data-original-title="Mail">
+                                                <i class="fa fa-envelope"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="" data-original-title="Search">
+                                                <i class="fa fa-search"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="" data-original-title="Print">
+                                                <i class="fa fa-print"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="" data-original-title="Print">
+                                                <i class="fa fa-share-alt"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-3 ">
+                            <div class="post-right-content">
+                                <h4>Available now</h4>
+                                <p><strong>Total Copies:</strong> 01</p>
+                                <p><strong>Available:</strong> 019780062419385</p>
+                                <p><strong>Holds:</strong>  01</p>
+                                <p><strong>On the shelves now at:</strong> Lawrence Public Library</p>
+                                <p><strong>Call #:</strong> 747 STRUTT C</p>
+                                <a href="#." class="available-location">Availability by Location <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                                <a href="#." class="btn btn-dark-gray">Place a Hold</a>
+                                <a href="#." class="btn btn-dark-gray">View sample</a>
+                                <a href="#." class="btn btn-dark-gray">Find Similar Titles</a>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                </main></div>
+        </div>*@
+
+
+
+
+
+</body>

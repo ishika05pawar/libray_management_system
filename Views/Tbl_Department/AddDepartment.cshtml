@@ -1,0 +1,86 @@
+﻿@model libray_management_system.Models.Tbl_Department
+
+@{
+    ViewBag.Title = "AddDepartment";
+    Layout = "~/Views/_LayoutPage2.cshtml";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Online Library Management System | Add Author</title>
+    <!-- BOOTSTRAP CORE STYLE  -->
+    <link href="~/assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONT AWESOME STYLE  -->
+    <link href="~/assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE  -->
+    <link href="~/assets/css/style.css" rel="stylesheet" />
+    <!-- GOOGLE FONT -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+</head>
+
+<h2>AddCategory</h2>
+
+<!-- MENU SECTION END-->
+<div class="content-wrapper">
+    <div class="content-wrapper">
+        <div class="container">
+            <div class="row pad-botm">
+                <div class="col-md-12">
+                    <h4 class="header-line">Add Department</h4>
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3" ">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Department Info
+                        </div>
+                        <div class="panel-body">
+                            <form role="form" method="post">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    <label>Department Name</label>
+                                    @*<input class="form-control" type="text" name="category" autocomplete="off" required />*@
+                                    @Html.TextBoxFor(x => x.departmentname, new { @class = "form-control" })
+
+                                </div>
+                                @Html.ValidationMessageFor(x => x.departmentname)
+
+                                <button type="submit" name="create" class="btn btn-info">Add </button>
+                                <div class="from-group">
+                                    <p style="color:green">
+                                        @ViewBag.success
+                                    </p>
+
+                                </div>
+                                <div class="from-group">
+                                    <p style="color:red">
+                                        @ViewBag.error
+                                    </p>
+
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    }
+    <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

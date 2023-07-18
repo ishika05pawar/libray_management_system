@@ -1,0 +1,198 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<libray_management_system.Models.Tbl_Book>
+
+@{
+    ViewBag.Title = "ManageBook";
+    Layout = "~/Views/_LayoutPage2.cshtml";
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Online Library Management System | Manage Book</title>
+    <!-- BOOTSTRAP CORE STYLE  -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONT AWESOME STYLE  -->
+    <link href="~/assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- DATATABLE STYLE  -->
+    <link href="~/assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE  -->
+    <link href="~/assets/css/style.css" rel="stylesheet" />
+    <!-- GOOGLE FONT -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <style>
+            body {
+                width: 80%
+            }
+
+            table {
+                width: 60%;
+                border-collapse: collapse;
+            }
+
+                table tr {
+                    border: solid thin;
+                }
+
+                    table tr td {
+                        width: 20%;
+                    }
+
+            #pager {
+                padding-left: 5%;
+            }
+
+                #pager p {
+                    margin-left: 5%;
+                }
+        </style>
+        <!------MENU SECTION START-->
+        <!-- MENU SECTION END-->
+        <div class="main-content">
+            <div class="content-wrapper">
+                <div class="container">
+                    <div class="row pad-botm">
+                        <div class="col-md-12">
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Advanced Tables -->
+                        <div class="panel panel-default">
+
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <h4 class="header-line">Manage Book</h4>
+                                    <div class="from-group">
+                                        <p style="color:green">
+                                            @ViewBag.Message
+                                        </p>
+
+                                    </div>
+                                    <div class="panel-heading">
+                                       
+                                        @*<p>
+                                            Find by name: @Html.TextBox("SearchString")
+                                            <input type="submit" value="Search" />
+                                        </p>*@
+                                    </div>
+
+                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example" align="center">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Book Name</th>
+                                                <th>Book Image</th>
+
+                                                <th>Category</th>
+                                                <th>Author</th>
+                                                <th>Department</th>
+                                                <th>Publisher</th>
+                                                <th>Publisher Year</th>
+                                                <th>Edition</th>
+                                                <th>ISBN Number</th>
+                                                <th>AccessionNo</th>
+                                                <th>Available Stock</th>
+                                                <th>Total Stock</th>
+                                                <th>Description</th>
+
+
+
+
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+
+                                                <tr class="odd gradeX">
+                                                    <td class="center"> @Html.DisplayFor(modelItem => item.bookid)</td>
+                                                    <td class="center">   @Html.DisplayFor(modelItem => item.bookname)</td>
+                                                    <td class="center"><img src="@Url.Content(item.bookimae)" width="150" height="150" /></td>
+                                                    <td class="center">
+                                                        @Html.DisplayFor(modelItem => item.Tbl_Category.categoryname)
+                                                    </td>
+
+                                                    <td class="center"> @Html.DisplayFor(modelItem => item.Tbl_Author.authorname)</td>
+                                                    <td class="center"> @Html.DisplayFor(modelItem => item.Tbl_Department.departmentname)</td>
+                                                    <td class="center"> @Html.DisplayFor(modelItem => item.Tbl_Publisher.publishername)</td>
+                                                    <td class="center"> @Html.DisplayFor(modelItem => item.publisheryear)</td>
+                                                    <td class="center"> @Html.DisplayFor(modelItem => item.edition)</td>
+                                                    <td class="center">
+                                                        @Html.DisplayFor(modelItem => item.isbnnumber)
+                                                    </td>
+                                                    <td class="center">
+                                                        @Html.DisplayFor(modelItem => item.accessionNo)
+                                                    </td>
+                                                    <td class="center"> @Html.DisplayFor(modelItem => item.availablestock)</td>
+                                                    <td class="center"> @Html.DisplayFor(modelItem => item.totalstok)</td>
+                                                    <td class="center"> @Html.DisplayFor(modelItem => item.description)</td>
+                                                    <td class="center">
+
+
+                                                        <button class="btn btn-primary"><i class="fa fa-edit "></i> @Html.ActionLink("Edit", "BookEdit", new { id = item.bookid })</button>
+
+                                                        <button class="btn btn-danger"><i class="fa fa-trash"></i>  @Html.ActionLink("Delete", "BookDelete", new { id = item.bookid })</button>
+
+
+
+                                                    </td>
+                                                </tr>
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                    <div id="pager">
+                                        <p> Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</p>
+                                        <span style=" color: black; float: left; padding: 8px 16px; background-color:cornflowerblue"> @Html.PagedListPager(Model, page => Url.Action("ManageCategory", new { page }))</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--End Advanced Tables -->
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+        <!-- CONTENT-WRAPPER SECTION END-->
+        <?php include('includes/footer.php');?>
+        <!-- FOOTER SECTION END-->
+        <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+        <!-- CORE JQUERY  -->
+        <script src="~/assets/js/jquery-1.10.2.js"></script>
+        <!-- BOOTSTRAP SCRIPTS  -->
+        <script src="~/assets/js/bootstrap.js"></script>
+        <!-- DATATABLE SCRIPTS  -->
+        <script src="~/assets/js/dataTables/jquery.dataTables.js"></script>
+        <script src="~/assets/js/dataTables/dataTables.bootstrap.js"></script>
+        <!-- CUSTOM SCRIPTS  -->
+        <script src="~/assets/js/custom.js"></script>
+    }
+</body>
+</html>
+
+
+

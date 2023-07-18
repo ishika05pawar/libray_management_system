@@ -1,0 +1,200 @@
+﻿@model libray_management_system.Models.UserLogin
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <head>
+
+        <!-- Meta -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1">
+
+        <!-- Title -->
+        <title>..:: LIBRARIA ::..</title>
+
+        <!-- Favicon -->
+        <link href="~/uassets/images/favicon.ico" rel="icon" type="image/x-icon" />
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i%7CLato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+        <link href="~/uassets/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- Mobile Menu -->
+        <link href="~/uassets/css/mmenu.css" rel="stylesheet" type="text/css" />
+        <link href="~/uassets/css/mmenu.positioning.css" rel="stylesheet" type="text/css" />
+
+        <!-- Stylesheet -->
+        <link href="~/uassets/css/style.css" rel="stylesheet" type="text/css" />
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="~/uassets/js/html5shiv.min.js"></script>
+        <script src="~/uassets/js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+
+</head>
+<body>
+    <section class="page-banner services-banner">
+        <div class="container">
+            <div class="banner-header">
+                <h2>Signin</h2>
+                <span class="underline center"></span>
+                <p class="lead">Proin ac eros pellentesque dolor pharetra tempo.</p>
+            </div>
+            <div class="breadcrumb">
+                <ul>
+                    <li><a href="index-2.html">Home</a></li>
+                    <li>Signin</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div id="content" class="site-content" align="center">
+            <div id="primary" class="content-area">
+                <main id="main" class="site-main">
+                    <div class="signin-main">
+                        <div class="container">
+                            <div class="woocommerce">
+                                <div class="woocommerce-login">
+                                    <div class="company-info signin-register" style=" align-content:center">
+                                        <div class="col-md-5 col-md-offset-1 border-dark-left">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="company-detail bg-dark margin-left">
+                                                        <div class="signin-head">
+                                                            <h2>Sign in</h2>
+                                                            <span class="underline left"></span>
+                                                        </div>
+                                                        <form class="login" method="post">
+                                                            <p class="form-row form-row-first input-required">
+                                                                <label>
+                                                                    <span class="first-letter">Email ID</span>
+                                                                    <span class="second-letter">*</span>
+                                                                </label>
+                                                                @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
+                                                            </p>
+                                                            <p class="form-row form-row-last input-required">
+                                                                <label>
+                                                                    <span class="first-letter">Password</span>
+                                                                    <span class="second-letter">*</span>
+                                                                </label>
+                                                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                                            </p>
+                                                            <div class="clear"></div>
+                                                            <div class="password-form-row">
+                                                                <p class="form-row input-checkbox">
+                                                                    <input type="checkbox" value="forever" id="rememberme" name="rememberme">
+                                                                    <label class="inline" for="rememberme">Remember me</label>
+                                                                </p>
+                                                                <p class="lost_password">
+                                                                    <a href="#">Lost your Pin?</a>
+                                                                </p>
+                                                            </div>
+                                                            <input type="submit" value="Login" class="btn btn-default" />
+                                                            <div class="clear"></div>
+                                                            <div class="from-group">
+                                                                <p style="color:orangered">
+                                                                    <b>   @ViewBag.error</b>
+                                                                </p>
+
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @*<div class="col-md-5 border-dark new-user">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="company-detail new-account bg-light margin-right">
+                                                            <div class="new-user-head">
+                                                                <h2>Create New Account</h2>
+                                                                <span class="underline left"></span>
+                                                                <p>If no barcode has been assigned for your account, please contact the library.</p>
+                                                            </div>
+                                                            <form class="login" method="post">
+                                                                <p class="form-row form-row-first input-required">
+                                                                    <label>
+                                                                        <span class="first-letter">Barcode</span>
+                                                                        <span class="second-letter">*</span>
+                                                                    </label>
+                                                                    <input type="text" id="username1" name="username" class="input-text">
+                                                                </p>
+                                                                <p class="form-row input-required">
+                                                                    <label>
+                                                                        <span class="first-letter">Password</span>
+                                                                        <span class="second-letter">*</span>
+                                                                    </label>
+                                                                    <input type="password" id="password1" name="password" class="input-text">
+                                                                </p>
+                                                                <div class="clear"></div>
+                                                                <input type="submit" value="Signup" name="signup" class="button btn btn-default">
+                                                                <div class="clear"></div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        @*<div class="form-horizontal">
+                <h4>UserLogin</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EmailID, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.RememberMe, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.RememberMe)
+                            @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>*@
+    }
+
+  
+</body>
+</html>

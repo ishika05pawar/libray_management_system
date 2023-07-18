@@ -1,0 +1,109 @@
+﻿
+
+@{
+    ViewBag.Title = "adminprofile";
+    Layout = "~/Views/_LayoutPage2.cshtml";
+}
+
+<style>
+    body {
+        background: #ffffff;
+    }
+
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #BA68C8
+    }
+
+    .profile-button {
+        background: #ff944d;
+        box-shadow: none;
+        border: none
+    }
+
+        .profile-button:hover {
+            background: #ff8533
+        }
+
+        .profile-button:focus {
+            background: #ff944d;
+            box-shadow: none
+        }
+
+        .profile-button:active {
+            background: #ff944d;
+            box-shadow: none
+        }
+
+    .back:hover {
+        color: #ff944d;
+        cursor: pointer
+    }
+
+    .labels {
+        font-size: 11px
+    }
+
+    .add-experience:hover {
+        background: #BA68C8;
+        color: #fff;
+        cursor: pointer;
+        border: solid 1px #BA68C8
+    }
+</style>
+
+
+</head>
+<body>
+    <!-- Start: Page Banner -->
+   
+    @if (Session["email"] != null)
+    {
+        <div class="container rounded bg-white mt-5 mb-5">
+            <div class="row">
+                <div class="col-md-3 border-right">
+
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                        <img class="rounded-circle mt-5" src='@Session["aimagepath"]'>
+                        <span class="font-weight-bold"><h5>@Session["adminname"]</h5></span>
+                        @*<span>/</span>*@
+                        <span class="text-black-50">@Session["email"]</span>
+                    </div>
+                </div>
+                <div class="col-md-5 border-right">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h3 class="text-center">Admins Profile </h3>
+                            &nbsp;
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12"><label class="labels"><h5>Name</h5></label><input type="text" class="form-control" value="@Session["adminname"]" readonly></div>
+                            &nbsp;
+                            <div class="col-md-12"><label class="labels"><h5>Email</h5></label><input type="text" class="form-control" value="@Session["email"]" readonly></div>
+
+                        </div>
+                        <div class="row mt-3">
+                            &nbsp;
+                            <div class="col-md-12"><label class="labels"><h5>Address</h5></label><input type="text" class="form-control" value="@Session["adminadd"]" readonly></div>
+
+                            &nbsp;
+                            <div class="col-md-12"><label class="labels"><h5>Contact</h5></label><input type="text" class="form-control" value="@Session["contact"]" readonly></div>
+                            &nbsp;
+                            @*<div class="col-md-12"><label class="labels"><h5>Gender</h5></label><input type="text" class="form-control" value="@Session["ugender"]" readonly></div>*@
+
+                        </div>
+
+                        &nbsp;
+                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+
+                </div>
+            </div>
+        </div>
+
+    }
+    &nbsp;
+
+</body>

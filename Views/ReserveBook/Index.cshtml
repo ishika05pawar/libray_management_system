@@ -1,0 +1,111 @@
+﻿@model IEnumerable<libray_management_system.Models.Tbl_Book>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutPage2.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.bookname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.publisheryear)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.edition)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bookimae)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.availablestock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.totalstok)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isbnnumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.accessionNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.regdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tbl_Author.authorname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tbl_Category.categoryname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tbl_Department.departmentname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tbl_Publisher.publishername)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.bookname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.publisheryear)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.edition)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bookimae)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.availablestock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.totalstok)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isbnnumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.accessionNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.regdate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tbl_Author.authorname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tbl_Category.categoryname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tbl_Department.departmentname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tbl_Publisher.publishername)
+        </td>
+        <td>
+            @Html.ActionLink("Reserve Book", "ReserveBook", new { id = item.bookid }, new { @class = "btn btn-success" }) |
+
+        </td>
+    </tr>
+}
+
+</table>

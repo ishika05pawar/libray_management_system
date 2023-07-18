@@ -1,0 +1,287 @@
+﻿@model libray_management_system.Models.Tbl_Book
+
+@{
+    ViewBag.Title = "AddBook";
+    Layout = "~/Views/_LayoutPage2.cshtml";
+}
+
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Online Library Management System | Add Book</title>
+    <!-- BOOTSTRAP CORE STYLE  -->
+    <link href="~/assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONT AWESOME STYLE  -->
+    <link href="~/assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE  -->
+    <link href="~/assets/css/style.css" rel="stylesheet" />
+    <!-- GOOGLE FONT -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <script type="text/javascript">
+    function checkisbnAvailability() {
+$("#loaderIcon").show();
+jQuery.ajax({
+url: "check_availability.php",
+data:'isbn='+$("#isbn").val(),
+type: "POST",
+success:function(data){
+$("#isbn-availability-status").html(data);
+$("#loaderIcon").hide();
+},
+error:function (){}
+});
+}
+
+    </script>
+</head>
+<body>
+    @using (Html.BeginForm("AddBook", "Tbl_Book", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <!------MENU SECTION START-->
+
+        <!-- MENU SECTION END-->
+        <br />
+        <br />
+        <br />
+        <div class="content-wrapper">
+            <div class="container">
+                <div class="row pad-botm">
+                    <div class="col-md-12">
+                        <h4 class="header-line">Add Book</h4>
+
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                Book Info
+                            </div>
+                            <div class="panel-body">
+
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Book Name<span style="color:red;">*</span></label>
+                                        @Html.TextBoxFor(x => x.bookname, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.bookname, "", new { @class = "text-danger" })
+                                        @*<input class="form-control" type="text" name="bookname" autocomplete="off" required />*@
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.bookname, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label> Category<span style="color:red;">*</span></label>
+                                        @Html.DropDownList("categoryid", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.categoryid, "", new { @class = "text-danger" })
+                                        @*<select class="form-control" name="category" required="required">
+            <option value=""> Select Category</option>
+
+            <option value="<?php echo htmlentities($result->id);?>"><?php echo htmlentities($result->CategoryName);?></option>
+            <?php }} ?>
+        </select>*@
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label> Author<span style="color:red;">*</span></label>
+                                        @Html.DropDownList("authorid", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.authorid, "", new { @class = "text-danger" })
+                                        @*<select class="form-control" name="author" required="required">
+            <option value=""> Select Author</option>
+
+            <option value="<?php echo htmlentities($result->id);?>"><?php echo htmlentities($result->AuthorName);?></option>
+
+        </select>*@
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label> Department <span style="color:red;">*</span></label>
+                                        @Html.DropDownList("departmentid", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.departmentid, "", new { @class = "text-danger" })
+
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label> Publisher <span style="color:red;">*</span></label>
+                                        @Html.DropDownList("publisherid", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.publisherid, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Publisher Year<span style="color:red;">*</span></label>
+                                        @Html.TextBoxFor(x => x.publisheryear, new { @class = "form-control" })
+
+                                        @Html.ValidationMessageFor(model => model.publisheryear, "", new { @class = "text-danger" })
+                                        @*<input class="form-control" type="text" name="bookname" autocomplete="off" required />*@
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Edition<span style="color:red;">*</span></label>
+                                        @Html.TextBoxFor(x => x.edition, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.edition, "", new { @class = "text-danger" })
+                                        @*<input class="form-control" type="text" name="price" autocomplete="off" required="required" />*@
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>ISBN Number<span style="color:red;">*</span></label>
+                                        @Html.TextBoxFor(x => x.isbnnumber, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.isbnnumber, "", new { @class = "text-danger" })
+                                        @*<input class="form-control" type="text" name="isbn" id="isbn" required="required" autocomplete="off" onBlur="checkisbnAvailability()" />*@
+                                        <p class="help-block">An ISBN is an International Standard Book Number.ISBN Must be unique</p>
+                                        <span id="isbn-availability-status" style="font-size:12px;"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Accession No.<span style="color:red;">*</span></label>
+                                        @Html.TextBoxFor(x => x.accessionNo, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.accessionNo, "", new { @class = "text-danger" })
+                                        @*<input class="form-control" type="text" name="price" autocomplete="off" required="required" />*@
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Available Stock<span style="color:red;">*</span></label>
+                                        @Html.TextBoxFor(x => x.availablestock, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.availablestock, "", new { @class = "text-danger" })
+                                        @*<input class="form-control" type="text" name="price" autocomplete="off" required="required" />*@
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>TotalStock<span style="color:red;">*</span></label>
+                                        @Html.TextBoxFor(x => x.totalstok, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.totalstok, "", new { @class = "text-danger" })
+                                        @*<input class="form-control" type="text" name="price" autocomplete="off" required="required" />*@
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Book Picture<span style="color:red;">*</span></label>
+                                        <input type="file" name="imagefile" required />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label> Description<span style="color:red;">*</span></label>
+                                        @Html.TextAreaFor(x => x.description, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+                                        @*<input class="form-control" type="text" name="bookname" autocomplete="off" required />*@
+                                    </div>
+                                </div>
+                                <button type="submit" name="add" id="add" class="btn btn-info">Submit </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <!-- CONTENT-WRAPPER SECTION END-->
+        <?php include('includes/footer.php');?>
+        <!-- FOOTER SECTION END-->
+        <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+        <!-- CORE JQUERY  -->
+        <script src="~/assets/js/jquery-1.10.2.js"></script>
+        <!-- BOOTSTRAP SCRIPTS  -->
+        <script src="~/assets/js/bootstrap.js"></script>
+        <!-- CUSTOM SCRIPTS  -->
+        <script src="~/assets/js/custom.js"></script>
+    }
+</body>
+
+
+
+@*@using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>book</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.bookname, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.bookname, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.bookname, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.categoryid, "categoryid", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("categoryid", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.categoryid, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.authorid, "authorid", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("authorid", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.authorid, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.isbnnumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.isbnnumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.isbnnumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.bookimage, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.bookimage, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.bookimage, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.isissued, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.isissued, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.isissued, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.regdate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.regdate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.regdate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }*@
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

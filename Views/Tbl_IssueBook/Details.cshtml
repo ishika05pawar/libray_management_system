@@ -1,0 +1,83 @@
+﻿@model libray_management_system.Models.Tbl_IssueBook
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/_LayoutPage2.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tbl_IssueBook</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.issuecopy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.issuecopy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.issuedate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.issuedate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.returndate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.returndate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.reserveNoOfBook)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.reserveNoOfBook)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tbl_Book.bookname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tbl_Book.bookname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tbl_User.uniquename)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tbl_User.uniquename)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.issueid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

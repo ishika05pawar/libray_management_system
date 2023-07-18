@@ -1,0 +1,131 @@
+﻿@model libray_management_system.Models.Tbl_Book
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/_LayoutPage2.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tbl_Book</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.bookname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bookname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.publisheryear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.publisheryear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.edition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.edition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bookimae)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bookimae)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.availablestock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.availablestock)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.totalstok)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totalstok)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isbnnumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isbnnumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.accessionNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.accessionNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.regdate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.regdate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tbl_Author.authorname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tbl_Author.authorname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tbl_Category.categoryname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tbl_Category.categoryname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tbl_Department.departmentname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tbl_Department.departmentname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tbl_Publisher.publishername)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tbl_Publisher.publishername)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.bookid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
